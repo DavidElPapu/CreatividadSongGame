@@ -15,7 +15,7 @@ public class PlayerScript : MonoBehaviour
     private ExtremitiesDetector leftHandDetector, rightHandDetector, leftFootDetector, rightFootDetector;
     private HingeJoint2D leftHandLockHinge, rightHandLockHinge, leftFootLockHinge, rightFootLockHinge;
     private bool isMovingHands, leftHandLocked, rightHandLocked, leftFootLocked, rightFootLocked;
-    public GameObject dieScreen, pendejoScreen;
+    public GameObject dieScreen;
 
 
     private void Awake()
@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour
         rightFoot.AddForce(moveInput * playerMoveSpeed, ForceMode2D.Force);
     }
 
-    private void OnSwitch()
+    public void OnSwitch()
     {
         isMovingHands = !isMovingHands;
     }
