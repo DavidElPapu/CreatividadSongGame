@@ -44,17 +44,17 @@ public class ExtremitiesDetector : MonoBehaviour
             selectedGrab = null;
             return;
         }
-        GameObject closestStone = null;
+        GameObject closestGrab = null;
         float closestDistance = 1000;
-        foreach (GameObject stone in grabObjectsDetected)
+        foreach (GameObject grab in grabObjectsDetected)
         {
-            if (Vector2.Distance(stone.transform.position, transform.position) < closestDistance)
+            if (Vector2.Distance(grab.transform.position, transform.position) < closestDistance)
             {
-                closestDistance = Vector2.Distance(stone.transform.position, transform.position);
-                closestStone = stone;
+                closestDistance = Vector2.Distance(grab.transform.position, transform.position);
+                closestGrab = grab;
             }
         }
-        selectedGrab = closestStone;
+        selectedGrab = closestGrab;
     }
 
     public bool IsHoldingGrab()

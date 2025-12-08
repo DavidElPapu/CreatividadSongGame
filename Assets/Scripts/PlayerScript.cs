@@ -36,15 +36,15 @@ public class PlayerScript : MonoBehaviour
     private void OnEnable()
     {
         playerActions.PlayerNoMeDeja.Enable();
-        playerActions.PlayerNoMeDeja.GrabLeft.started += OnLeftGrab;
-        playerActions.PlayerNoMeDeja.GrabRight.started += OnRightGrab;
+        playerActions.PlayerNoMeDeja.GrabLeft.performed += OnLeftGrab;
+        playerActions.PlayerNoMeDeja.GrabRight.performed += OnRightGrab;
     }
 
     private void OnDisable()
     {
         playerActions.PlayerNoMeDeja.Disable();
-        playerActions.PlayerNoMeDeja.GrabLeft.started -= OnLeftGrab;
-        playerActions.PlayerNoMeDeja.GrabRight.started -= OnRightGrab;
+        playerActions.PlayerNoMeDeja.GrabLeft.performed -= OnLeftGrab;
+        playerActions.PlayerNoMeDeja.GrabRight.performed -= OnRightGrab;
     }
 
     private void Start()
@@ -112,6 +112,20 @@ public class PlayerScript : MonoBehaviour
 
     public void OnSwitch()
     {
+        if (isMovingHands)
+        {
+            if (rightHandRenderer.sprite == lockedHandSprite)
+                RightHandGrab();
+            if (leftHandRenderer.sprite == lockedHandSprite)
+                LeftHandGrab();
+        }
+        else
+        {
+            if (rightFootRenderer.sprite == lockedFootSprite)
+                RightFootGrab();
+            if (leftFootRenderer.sprite == lockedFootSprite)
+                LeftFootGrab();
+        }
         isMovingHands = !isMovingHands;
     }
 
